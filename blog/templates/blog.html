@@ -1,0 +1,34 @@
+<! -- extends - used for carry all the lines of particular html content into this class -->
+{% extends 'bootstrap_content.html' %}
+
+< !-- block - used for overriding the template -->
+{% block content %}
+
+<h1 id = "blogtitle" class="font-weight text-center my-3" style="color: cadetblue">This is blog</h1>
+
+<h3 class="font-weight text-center"> Prasanth has created {{project_blog_data.count}} blog{{ project_blog_data.count|pluralize }}</h3>
+
+<br>
+{% for blog in project_blog_data %}
+
+<div class="row justify-content-center my-3">
+    <div class="col-md-12">
+
+        <! -- blog:detail the blog is just name use for not get into confuse if there are multi name with the same -->
+        <a href="{% url 'blog:detail' blog.id %}">
+         <h1>{{ blog.title }}</h1>
+        </a>
+
+        <! -- To get particular format of the date |date: format is used -->
+        <h3 class="text-muted">{{ blog.date| date:'d M y' | upper }}</h3>
+
+        <! -- striptags - To avoid html tag's if given while entering data
+              safe      - It is used to effect the data if any html tags enter -- >
+        <h4>{{ blog.description|striptags|truncatechars:100 }}</h4>
+
+    </div>
+</div>
+
+
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,11 @@
+<! -- extends - used for carry all the lines of particular html content into this class -->
+{% extends 'bootstrap_content.html' %}
+
+< !-- block - used for overriding the template -->
+{% block content %}
+
+<h1 class="font-weight text-center my-4">{{ blog_dta.title }}</h1>
+<h2 class="font-weight text-center my-4" style="color: gray">{{ blog_dta.date|date:'F jS Y' }}</h2>
+<h5 align="justify">{{ blog_dta.description|safe }}</h5>
+
+{% endblock %}
