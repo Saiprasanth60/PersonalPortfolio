@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'l(@88waq9f8%usy5!b-7j#8pxvcnqn9#%(2ss3ggf^z*8w+f&$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://prasanthsai.pythonanywhere.com/']
 
 
 # Application definition
@@ -125,4 +125,9 @@ MEDIA_URL = '/media/'
 
 # by this way media folder is created in base directory
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("Your must be production")
 
